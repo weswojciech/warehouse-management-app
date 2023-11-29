@@ -47,6 +47,11 @@ class App extends Component {
 
   return true;
  };
+ deleteItem = (id) => {
+  let items = [...this.state.items];
+  items = items.filter((items) => items.id !== id);
+  this.setState({ items });
+ };
  render() {
   return (
    <div className="App">
@@ -58,6 +63,7 @@ class App extends Component {
      items={this.state.items}
      increase={this.increaseAmount}
      decrease={this.decreaseAmount}
+     delete={this.deleteItem}
     />
    </div>
   );

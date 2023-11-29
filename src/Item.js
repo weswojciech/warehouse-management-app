@@ -21,6 +21,9 @@ const Item = (props) => {
     >
      +
     </button>
+    <button className="item__btn" onClick={() => props.delete(id)}>
+     X
+    </button>
    </li>
   </>
  );

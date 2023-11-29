@@ -19,7 +19,6 @@ class AddItem extends Component {
  };
 
  handleAddClick = (props) => {
-  // zrobić funkcje sprawdzającą czy dany produkt jest dodany
   let index = this.props.items.length;
   for (let i = 0; i < index; i++) {
    if (
@@ -28,6 +27,10 @@ class AddItem extends Component {
     alert("Dany produkt znajduje się w bazie!");
     return;
    }
+   this.setState({
+    name: "",
+    amount: "1",
+   });
   }
   const { name, amount } = this.state;
   if (name.length > 3) {
@@ -42,9 +45,7 @@ class AddItem extends Component {
    alert("Nazwa produktu jest zbyt krótka!");
   }
  };
- //  handleValidateName = () => {
- //   const { name } = this.state
- //  }
+
  render() {
   return (
    <div className="add-item">

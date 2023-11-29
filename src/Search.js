@@ -7,6 +7,15 @@ class Search extends Component {
   input: "",
  };
  handleInputChange = (e) => {
+  let index = this.props.items.length;
+  for (let i = 0; i < index; i++) {
+   if (
+    this.props.items[i].name.toLowerCase() === this.state.input.toLowerCase()
+   ) {
+    console.log("XD");
+    // return;
+   }
+  }
   this.setState({
    input: e.target.value,
   });
