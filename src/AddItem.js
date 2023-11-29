@@ -22,7 +22,9 @@ class AddItem extends Component {
   // zrobić funkcje sprawdzającą czy dany produkt jest dodany
   let index = this.props.items.length;
   for (let i = 0; i < index; i++) {
-   if (this.props.items[i].name === this.state.name) {
+   if (
+    this.props.items[i].name.toLowerCase() === this.state.name.toLowerCase()
+   ) {
     alert("Dany produkt znajduje się w bazie!");
     return;
    }
