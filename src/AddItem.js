@@ -20,10 +20,14 @@ class AddItem extends Component {
 
  handleAddClick = (props) => {
   // zrobić funkcje sprawdzającą czy dany produkt jest dodany
-  const { name, amount } = this.state;
-  if (name === this.props.items.name) {
-   console.log("XD");
+  let index = this.props.items.length;
+  for (let i = 0; i < index; i++) {
+   if (this.props.items[i].name === this.state.name) {
+    alert("Dany produkt znajduje się w bazie!");
+    return;
+   }
   }
+  const { name, amount } = this.state;
   if (name.length > 3) {
    const add = this.props.add(name, amount);
    if (add) {
