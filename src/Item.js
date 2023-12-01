@@ -3,11 +3,14 @@ import React from "react";
 import "./Item.css";
 
 const Item = (props) => {
- const { name, amount, id } = props.item;
+ const { name, amount, id, amountInPackage, volume } = props.item;
+
+ const amountInLiters = amount * amountInPackage * volume;
+
  return (
   <>
    <li className="item">
-    {name} - ilość:
+    {name} - ilość(szt.):
     <button
      className="item__btn  btn__amount--decrease"
      onClick={() => props.decrease(id)}
@@ -21,6 +24,7 @@ const Item = (props) => {
     >
      +
     </button>
+    Ilość (litry): {amountInLiters}L
     <button className="item__btn" onClick={() => props.delete(id)}>
      X
     </button>

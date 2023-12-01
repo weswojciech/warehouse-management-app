@@ -6,19 +6,20 @@ class Search extends Component {
  state = {
   input: "",
  };
- handleInputChange = (e) => {
-  let index = this.props.items.length;
-  for (let i = 0; i < index; i++) {
-   if (
-    this.props.items[i].name.toLowerCase() === this.state.input.toLowerCase()
-   ) {
-    console.log("XD");
-    // return;
-   }
-  }
+ handleInputChange = (e, props) => {
+  // do sprawdzenia
   this.setState({
    input: e.target.value,
   });
+
+  const filteredItems = this.props.items.filter((item) => {
+   if (this.state.input === "") {
+    return this.props.items;
+   } else {
+    return item.name.toLowerCase().includes(this.state.input);
+   }
+  });
+  console.log(filteredItems);
  };
  render() {
   return (

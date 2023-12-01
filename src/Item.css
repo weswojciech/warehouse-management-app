@@ -1,6 +1,6 @@
 .item {
   line-height: 50px;
-  padding-left: 100px;
+  padding-left: 15px;
   list-style: none;
   flex-basis: 50%;
   /* height: 50px; */
@@ -17,5 +17,5 @@
 }
 .item:nth-child(odd) {
   background-color: rgb(240, 240, 240);
-  border-right: 1px solid grey;
+  border-right: 3px solid grey;
 }

@@ -13,6 +13,10 @@ class App extends Component {
     id: 0,
     name: "",
     amount: "",
+    packaging: "",
+    litrage: "",
+    volume: "",
+    amountInPackage: "",
    },
   ],
  };
@@ -34,11 +38,16 @@ class App extends Component {
    this.setState({ items });
   });
  };
- addItem = (name, amount) => {
+
+ addItem = (name, amount, packaging, litrage, volume, amountInPackage) => {
   const item = {
    id: this.counter,
    name,
    amount,
+   packaging,
+   litrage,
+   volume,
+   amountInPackage,
   };
   this.counter++;
   this.setState((prevState) => ({
@@ -52,12 +61,18 @@ class App extends Component {
   items = items.filter((items) => items.id !== id);
   this.setState({ items });
  };
+ searchItem = (name) => {
+  let searchedItems = [...this.state.items];
+  searchedItems = searchedItems.filter((items) => items.name === name);
+  this.setState({ items: searchedItems });
+  return true;
+ };
  render() {
   return (
    <div className="App">
     <div className="menu">
      <AddItem add={this.addItem} items={this.state.items} />
-     <Search items={this.state.items} />
+     <Search items={this.state.items} search={this.searchItem} />
     </div>
     <ItemList
      items={this.state.items}

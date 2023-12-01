@@ -6,6 +6,10 @@ class AddItem extends Component {
  state = {
   name: "",
   amount: "1",
+  amountInPackage: "",
+  packaging: "",
+  volume: "",
+  litrage: "",
  };
  handleNameChange = (e) => {
   this.setState({
@@ -17,7 +21,21 @@ class AddItem extends Component {
    amount: e.target.value,
   });
  };
-
+ handleAmountInPackageChange = (e) => {
+  this.setState({
+   amountInPackage: e.target.value,
+  });
+ };
+ handlePackagingChange = (e) => {
+  this.setState({
+   packaging: e.target.value,
+  });
+ };
+ handleVolumeChange = (e) => {
+  this.setState({
+   volume: e.target.value,
+  });
+ };
  handleAddClick = (props) => {
   let index = this.props.items.length;
   for (let i = 0; i < index; i++) {
@@ -32,9 +50,17 @@ class AddItem extends Component {
     amount: "1",
    });
   }
-  const { name, amount } = this.state;
+  const { name, amount, packaging, litrage, volume, amountInPackage } =
+   this.state;
   if (name.length > 3) {
-   const add = this.props.add(name, amount);
+   const add = this.props.add(
+    name,
+    amount,
+    packaging,
+    litrage,
+    volume,
+    amountInPackage
+   );
    if (add) {
     this.setState({
      name: "",
@@ -50,7 +76,7 @@ class AddItem extends Component {
   return (
    <div className="add-item">
     <input
-     className="add-item__input add-item__input--product-name"
+     className="add-item__input add-item__input-product-name"
      type="text"
      placeholder="Wpisz nazwę produktu"
      value={this.state.name}
@@ -58,12 +84,44 @@ class AddItem extends Component {
     />
     <input
      type="number"
-     className="add-item__input add-item__input--amount"
+     className="add-item__input add-item__input-amount"
      placeholder="0"
      min={0}
      value={this.state.amount}
      onChange={this.handleAmountChange}
     />
+    <select
+     name="type"
+     id="select__type"
+     className="add-item__select add-item__select-type"
+     value={this.state.packaging}
+     onChange={this.handlePackagingChange}
+    >
+     <option value="piece">Sztuka</option>
+     <option value="packaging">Opakowanie</option>
+    </select>
+    <input
+     type="number"
+     name="amountInPackage"
+     className="add-item__input add-item__input-amountInPackage"
+     placeholder="Szt w opak"
+     onChange={this.handleAmountInPackageChange}
+    />
+    <select
+     name="volume"
+     id="select__volume"
+     className="add-item__select add-item__select-volume"
+     onChange={this.handleVolumeChange}
+    >
+     <option value=".25">250ml</option>
+     <option value=".33">330ml</option>
+     <option value=".5">500ml</option>
+     <option value=".7">700ml</option>
+     <option value=".850">850ml</option>
+     <option value="1">1000ml</option>
+     <option value="1.5">1500ml</option>
+    </select>
+
     <button className="add-item__btn" onClick={this.handleAddClick}>
      Dodaj
     </button>
