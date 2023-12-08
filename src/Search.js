@@ -6,20 +6,10 @@ class Search extends Component {
  state = {
   input: "",
  };
- handleInputChange = (e, props) => {
-  // do sprawdzenia
+ handleInputChange = (e) => {
   this.setState({
    input: e.target.value,
   });
-
-  const filteredItems = this.props.items.filter((item) => {
-   if (this.state.input === "") {
-    return this.props.items;
-   } else {
-    return item.name.toLowerCase().includes(this.state.input);
-   }
-  });
-  console.log(filteredItems);
  };
  render() {
   return (

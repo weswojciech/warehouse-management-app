@@ -17,6 +17,7 @@ class App extends Component {
     litrage: "",
     volume: "",
     amountInPackage: "",
+    singlePiece: "",
    },
   ],
  };
@@ -24,7 +25,7 @@ class App extends Component {
   const items = [...this.state.items];
   items.forEach((item) => {
    if (item.id === id) {
-    item.amount++;
+    item.singlePiece++;
    }
    this.setState({ items });
   });
@@ -33,13 +34,20 @@ class App extends Component {
   const items = [...this.state.items];
   items.forEach((item) => {
    if (item.id === id) {
-    item.amount--;
+    item.singlePiece--;
    }
    this.setState({ items });
   });
  };
-
- addItem = (name, amount, packaging, litrage, volume, amountInPackage) => {
+ addItem = (
+  name,
+  amount,
+  packaging,
+  litrage,
+  volume,
+  amountInPackage,
+  singlePiece
+ ) => {
   const item = {
    id: this.counter,
    name,
@@ -48,12 +56,12 @@ class App extends Component {
    litrage,
    volume,
    amountInPackage,
+   singlePiece,
   };
   this.counter++;
   this.setState((prevState) => ({
    items: [...prevState.items, item],
   }));
-
   return true;
  };
  deleteItem = (id) => {
@@ -61,12 +69,12 @@ class App extends Component {
   items = items.filter((items) => items.id !== id);
   this.setState({ items });
  };
- searchItem = (name) => {
-  let searchedItems = [...this.state.items];
-  searchedItems = searchedItems.filter((items) => items.name === name);
-  this.setState({ items: searchedItems });
-  return true;
+ searchItem = (e) => {
+  this.setState({
+   input: e.target.value,
+  });
  };
+
  render() {
   return (
    <div className="App">
@@ -79,6 +87,7 @@ class App extends Component {
      increase={this.increaseAmount}
      decrease={this.decreaseAmount}
      delete={this.deleteItem}
+     filteredItems={this.props.filteredItems}
     />
    </div>
   );

@@ -3,7 +3,7 @@ import Item from "./Item.js";
 import "./ItemList.css";
 
 const ItemList = (props) => {
- const available = props.items.filter((item) => item.amount > 0);
+ const available = props.items.filter((item) => item.singlePiece > 0);
  const sortedAvailable = available.sort(function (a, b) {
   if (a.name < b.name) {
    return -1;
@@ -23,7 +23,7 @@ const ItemList = (props) => {
   />
  ));
 
- const unavailable = props.items.filter((item) => item.amount === 0);
+ const unavailable = props.items.filter((item) => item.singlePiece === 0);
  const sortedUnavailable = unavailable.sort(function (a, b) {
   if (a.name < b.name) {
    return -1;

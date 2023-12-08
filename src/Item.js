@@ -3,10 +3,9 @@ import React from "react";
 import "./Item.css";
 
 const Item = (props) => {
- const { name, amount, id, amountInPackage, volume } = props.item;
+ const { name, id, volume, singlePiece } = props.item;
 
- const amountInLiters = amount * amountInPackage * volume;
-
+ const amountInLiters = singlePiece * volume;
  return (
   <>
    <li className="item">
@@ -17,7 +16,7 @@ const Item = (props) => {
     >
      -
     </button>
-    {amount}
+    {singlePiece}
     <button
      className="item__btn btn__amount--increase"
      onClick={() => props.increase(id)}

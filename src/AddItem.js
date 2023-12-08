@@ -6,10 +6,11 @@ class AddItem extends Component {
  state = {
   name: "",
   amount: "1",
-  amountInPackage: "",
-  packaging: "",
-  volume: "",
+  amountInPackage: "1",
+  packaging: "piece",
+  volume: ".25",
   litrage: "",
+  singlePiece: "",
  };
  handleNameChange = (e) => {
   this.setState({
@@ -19,11 +20,13 @@ class AddItem extends Component {
  handleAmountChange = (e) => {
   this.setState({
    amount: e.target.value,
+   singlePiece: e.target.value * this.state.amountInPackage,
   });
  };
  handleAmountInPackageChange = (e) => {
   this.setState({
    amountInPackage: e.target.value,
+   singlePiece: e.target.value * this.state.amount,
   });
  };
  handlePackagingChange = (e) => {
@@ -48,10 +51,18 @@ class AddItem extends Component {
    this.setState({
     name: "",
     amount: "1",
+    amountInPackage: "1",
    });
   }
-  const { name, amount, packaging, litrage, volume, amountInPackage } =
-   this.state;
+  const {
+   name,
+   amount,
+   packaging,
+   litrage,
+   volume,
+   amountInPackage,
+   singlePiece,
+  } = this.state;
   if (name.length > 3) {
    const add = this.props.add(
     name,
@@ -59,19 +70,20 @@ class AddItem extends Component {
     packaging,
     litrage,
     volume,
-    amountInPackage
+    amountInPackage,
+    singlePiece
    );
    if (add) {
     this.setState({
      name: "",
      amount: "1",
+     amountInPackage: "1",
     });
    }
   } else {
    alert("Nazwa produktu jest zbyt krótka!");
   }
  };
-
  render() {
   return (
    <div className="add-item">
@@ -105,6 +117,8 @@ class AddItem extends Component {
      name="amountInPackage"
      className="add-item__input add-item__input-amountInPackage"
      placeholder="Szt w opak"
+     value={this.state.amountInPackage}
+     min={0}
      onChange={this.handleAmountInPackageChange}
     />
     <select
