@@ -11,6 +11,7 @@ class AddItem extends Component {
   volume: ".25",
   litrage: "",
   singlePiece: "",
+  isActive: false,
  };
  handleNameChange = (e) => {
   this.setState({
@@ -62,6 +63,7 @@ class AddItem extends Component {
    volume,
    amountInPackage,
    singlePiece,
+   isActive,
   } = this.state;
   if (name.length > 3) {
    const add = this.props.add(
@@ -71,7 +73,8 @@ class AddItem extends Component {
     litrage,
     volume,
     amountInPackage,
-    singlePiece
+    singlePiece,
+    isActive
    );
    if (add) {
     this.setState({

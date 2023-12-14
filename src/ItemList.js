@@ -20,6 +20,7 @@ const ItemList = (props) => {
    increase={props.increase}
    decrease={props.decrease}
    delete={props.delete}
+   expandItem={props.expandItem}
   />
  ));
 
@@ -40,6 +41,7 @@ const ItemList = (props) => {
    increase={props.increase}
    decrease={props.decrease}
    delete={props.delete}
+   expandItem={props.expandItem}
   />
  ));
  return (

@@ -3,12 +3,13 @@ import React from "react";
 import "./Item.css";
 
 const Item = (props) => {
- const { name, id, volume, singlePiece } = props.item;
+ const { name, id, volume, singlePiece, isActive } = props.item;
 
  const amountInLiters = singlePiece * volume;
+
  return (
   <>
-   <li className="item">
+   <li className={isActive ? "item-active" : "item"}>
     {name} - ilość(szt.):
     <button
      className="item__btn  btn__amount--decrease"
@@ -23,9 +24,15 @@ const Item = (props) => {
     >
      +
     </button>
-    Ilość (litry): {amountInLiters}L
+    Ilość (litry): {Math.floor(amountInLiters * 100) / 100}L
     <button className="item__btn" onClick={() => props.delete(id)}>
      X
+    </button>
+    <button
+     className="item__btn item__btn-expand"
+     onClick={() => props.expandItem(id)}
+    >
+     {isActive ? "^" : "v"}
     </button>
    </li>
   </>

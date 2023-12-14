@@ -18,6 +18,7 @@ class App extends Component {
     volume: "",
     amountInPackage: "",
     singlePiece: "",
+    isActive: false,
    },
   ],
  };
@@ -34,9 +35,12 @@ class App extends Component {
   const items = [...this.state.items];
   items.forEach((item) => {
    if (item.id === id) {
+    if (item.singlePiece === 0) {
+     return null;
+    }
     item.singlePiece--;
+    this.setState({ items });
    }
-   this.setState({ items });
   });
  };
  addItem = (
@@ -46,7 +50,8 @@ class App extends Component {
   litrage,
   volume,
   amountInPackage,
-  singlePiece
+  singlePiece,
+  isActive
  ) => {
   const item = {
    id: this.counter,
@@ -57,6 +62,7 @@ class App extends Component {
    volume,
    amountInPackage,
    singlePiece,
+   isActive,
   };
   this.counter++;
   this.setState((prevState) => ({
@@ -69,18 +75,23 @@ class App extends Component {
   items = items.filter((items) => items.id !== id);
   this.setState({ items });
  };
- searchItem = (e) => {
-  this.setState({
-   input: e.target.value,
+ expandItem = (id) => {
+  const items = [...this.state.items];
+  items.forEach((item) => {
+   if (item.id === id && item.isActive === true) {
+    item.isActive = false;
+   } else if (item.id === id && item.isActive === false) {
+    item.isActive = true;
+   }
+   this.setState({ items });
   });
  };
-
  render() {
   return (
    <div className="App">
     <div className="menu">
      <AddItem add={this.addItem} items={this.state.items} />
-     <Search items={this.state.items} search={this.searchItem} />
+     <Search items={this.state.items} />
     </div>
     <ItemList
      items={this.state.items}
@@ -88,6 +99,7 @@ class App extends Component {
      decrease={this.decreaseAmount}
      delete={this.deleteItem}
      filteredItems={this.props.filteredItems}
+     expandItem={this.expandItem}
     />
    </div>
   );

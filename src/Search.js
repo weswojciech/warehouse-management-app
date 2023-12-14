@@ -10,6 +10,14 @@ class Search extends Component {
   this.setState({
    input: e.target.value,
   });
+  let filteredItems = this.props.items.filter((item) => {
+   if (e.target.value === "") {
+    return this.props.items;
+   } else {
+    return item.name.toLowerCase().includes(e.target.value.toLowerCase());
+   }
+  });
+  console.log(filteredItems);
  };
  render() {
   return (
