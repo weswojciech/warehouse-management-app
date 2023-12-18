@@ -130,11 +130,11 @@ class AddItem extends Component {
      className="add-item__select add-item__select-volume"
      onChange={this.handleVolumeChange}
     >
-     <option value=".25">250ml</option>
-     <option value=".33">330ml</option>
-     <option value=".5">500ml</option>
-     <option value=".7">700ml</option>
-     <option value=".850">850ml</option>
+     <option value="0.25">250ml</option>
+     <option value="0.33">330ml</option>
+     <option value="0.5">500ml</option>
+     <option value="0.7">700ml</option>
+     <option value="0.850">850ml</option>
      <option value="1">1000ml</option>
      <option value="1.5">1500ml</option>
     </select>

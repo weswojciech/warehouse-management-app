@@ -10,26 +10,35 @@ const Item = (props) => {
  return (
   <>
    <li className={isActive ? "item-active" : "item"}>
-    {name} - ilość(szt.):
+    <span>
+     {name} - ilość(szt.):
+     <button
+      className="item__btn  btn__amount--decrease"
+      onClick={() => props.decrease(id)}
+     >
+      -
+     </button>
+     {singlePiece}
+     <button
+      className="item__btn btn__amount--increase"
+      onClick={() => props.increase(id)}
+     >
+      +
+     </button>
+     Ilość (litry): {Math.floor(amountInLiters * 100) / 100}L
+     <button className="item__btn" onClick={() => props.delete(id)}>
+      X
+     </button>
+     <p>
+      {isActive ? ` Opakowania o pojemności: ${props.item.volume}L` : null}
+     </p>
+    </span>
     <button
-     className="item__btn  btn__amount--decrease"
-     onClick={() => props.decrease(id)}
-    >
-     -
-    </button>
-    {singlePiece}
-    <button
-     className="item__btn btn__amount--increase"
-     onClick={() => props.increase(id)}
-    >
-     +
-    </button>
-    Ilość (litry): {Math.floor(amountInLiters * 100) / 100}L
-    <button className="item__btn" onClick={() => props.delete(id)}>
-     X
-    </button>
-    <button
-     className="item__btn item__btn-expand"
+     className={
+      isActive
+       ? "item__btn item__btn-expand-active"
+       : "item__btn item__btn-expand"
+     }
      onClick={() => props.expandItem(id)}
     >
      {isActive ? "^" : "v"}

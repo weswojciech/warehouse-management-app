@@ -1,0 +1,13 @@
+.App {
+  max-width: 1200px;
+  min-height: 100vh;
+  box-shadow: 0 0 20px 0 rgb(180, 180, 180);
+  margin: 0 auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #90d7fe;
+}/*# sourceMappingURL=App.css.map */

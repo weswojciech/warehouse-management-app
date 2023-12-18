@@ -23,7 +23,6 @@ const ItemList = (props) => {
    expandItem={props.expandItem}
   />
  ));
-
  const unavailable = props.items.filter((item) => item.singlePiece === 0);
  const sortedUnavailable = unavailable.sort(function (a, b) {
   if (a.name < b.name) {
@@ -44,12 +43,14 @@ const ItemList = (props) => {
    expandItem={props.expandItem}
   />
  ));
+ const filteredItems = props.filteredItems;
  return (
   <section className="item-list">
    <h1 className="item-list__title">Produkty dostępne na magazynie</h1>
    <ul className="item-list__list">{availableItemsSorted}</ul>
    <h1 className="item-list__title">Produkty niedostępne na magazynie</h1>
    <ul className="item-list__list">{unavailableItemsSorted}</ul>
+   <p>{filteredItems}</p>
   </section>
  );
 };

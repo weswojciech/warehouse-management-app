@@ -21,6 +21,7 @@ class App extends Component {
     isActive: false,
    },
   ],
+  input: "",
  };
  increaseAmount = (id) => {
   const items = [...this.state.items];
@@ -86,19 +87,36 @@ class App extends Component {
    this.setState({ items });
   });
  };
+ handleInputChange = (e) => {
+  this.setState({
+   input: e.target.value,
+  });
+  let filteredItems = this.state.items.filter((item) => {
+   if (e.target.value === "") {
+    return this.state.items;
+   } else {
+    return item.name.toLowerCase().includes(e.target.value.toLowerCase());
+   }
+  });
+  console.log(filteredItems);
+  return filteredItems;
+ };
  render() {
   return (
    <div className="App">
     <div className="menu">
      <AddItem add={this.addItem} items={this.state.items} />
-     <Search items={this.state.items} />
+     <Search
+      items={this.state.items}
+      handleInputChange={this.handleInputChange}
+     />
     </div>
     <ItemList
      items={this.state.items}
      increase={this.increaseAmount}
      decrease={this.decreaseAmount}
      delete={this.deleteItem}
-     filteredItems={this.props.filteredItems}
+     filteredItems={this.filteredItems}
      expandItem={this.expandItem}
     />
    </div>
