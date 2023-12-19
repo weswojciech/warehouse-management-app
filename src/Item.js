@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Item.css";
+import "./scss/Item.css";
 
 const Item = (props) => {
  const { name, id, volume, singlePiece, isActive } = props.item;
@@ -10,7 +10,7 @@ const Item = (props) => {
  return (
   <>
    <li className={isActive ? "item-active" : "item"}>
-    <span>
+    <span className="item__span">
      {name} - ilość(szt.):
      <button
       className="item__btn  btn__amount--decrease"
@@ -29,7 +29,7 @@ const Item = (props) => {
      <button className="item__btn" onClick={() => props.delete(id)}>
       X
      </button>
-     <p>
+     <p className={isActive ? "item-active__text" : "item__text"}>
       {isActive ? ` Opakowania o pojemności: ${props.item.volume}L` : null}
      </p>
     </span>

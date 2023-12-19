@@ -1,0 +1,12 @@
+.item-list__title {
+  margin: 20px auto;
+  font-size: 20px;
+  flex-basis: 100%;
+  text-align: center;
+}
+.item-list__list {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 300px;
+}/*# sourceMappingURL=ItemList.css.map */

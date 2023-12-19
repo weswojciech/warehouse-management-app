@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./App.css";
+import "./scss/App.css";
 import AddItem from "./AddItem.js";
 import ItemList from "./ItemList.js";
 import Search from "./Search.js";

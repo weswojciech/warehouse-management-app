@@ -1,0 +1,16 @@
+.search-bar{
+  line-height: 35px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 18px;
+  width: 120px;
+  padding: 0 15px;
+  transition: 0.2s;
+  margin-right: 20px;
+  box-shadow: 0px 2px 2px 0px rgb(0, 0, 0);
+  &:focus{
+    width: 220px;
+    outline: none;
+  }
+}

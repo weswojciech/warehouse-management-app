@@ -1,6 +1,6 @@
 import Item from "./Item.js";
 
-import "./ItemList.css";
+import "./scss/ItemList.css";
 
 const ItemList = (props) => {
  const available = props.items.filter((item) => item.singlePiece > 0);
