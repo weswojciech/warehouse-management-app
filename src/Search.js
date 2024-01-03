@@ -6,7 +6,8 @@ class Search extends Component {
  state = {
   input: "",
  };
- //  handleInputChange = (e) => {
+ // do usuniecia
+ // handleInputChange = (e) => {
  //   this.setState({
  //    input: e.target.value,
  //   });
